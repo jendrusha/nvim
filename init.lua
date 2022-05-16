@@ -11,6 +11,6 @@ SPLIT_STR = require('funcs.nvim').split_into_table
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
 
-vim.notify = require("notify")
-
 require("jnvim"):load()
+
+vim.notify = require("notify")
