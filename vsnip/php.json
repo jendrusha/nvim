@@ -1,0 +1,94 @@
+{
+  "class_with_interface": {
+    "prefix": ["_classi"],
+    "body": [
+      "<?php",
+      "declare(strict_types = 1);",
+      "",
+      "namespace ${VIM:BuildPhpNamespace()};",
+      "",
+      "final class ${VIM:expand('%:t:r')} implements ${VIM:expand('%:t:r')}Interface",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Class definition template."
+  },
+  "class": {
+    "prefix": ["_class"],
+    "body": [
+      "<?php",
+      "declare(strict_types = 1);",
+      "",
+      "namespace ${VIM:BuildPhpNamespace()};",
+      "",
+      "final class ${VIM:expand('%:t:r')}",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Final Class without interface definition template."
+  },
+  "interface": {
+    "prefix": ["_interface"],
+    "body": [
+      "<?php",
+      "declare(strict_types = 1);",
+      "",
+      "namespace ${VIM:BuildPhpNamespace()};",
+      "",
+      "interface ${VIM:expand('%:t:r')}",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Final Class without interface definition template."
+  },
+  "construct": {
+    "prefix": ["_func_construct"],
+    "body": [
+      "public function __construct(",
+      "\t$1",
+      ") {}"
+    ],
+    "description": "Construct definition template."
+  },
+  "public": {
+    "prefix": ["_func_public"],
+    "body": [
+      "public function ${1:__name__}($2): ${3:void}",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Public method definition template."
+  },
+  "private": {
+    "prefix": ["_func_private"],
+    "body": [
+      "private function ${1:__name__}($2): ${3:void}",
+      "{",
+      "\t$0",
+      "}"
+    ],
+    "description": "Private method definition template."
+  },
+  "namespace": {
+    "prefix": ["_namespace"],
+    "body": [
+      "namespace ${VIM:BuildPhpNamespace()};"
+    ],
+    "description": "Namespace template."
+  },
+  "try_catch": {
+    "prefix": ["_try_catch"],
+    "body": [
+      "try {",
+      "\t$1",
+      "} catch (Throwable) {",
+      "\t$2",
+      "}"
+    ],
+    "description": "Namespace template."
+  }
+}

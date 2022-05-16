@@ -1,0 +1,61 @@
+{
+  "error_check_snip": {
+    "prefix": ["_errcheck"],
+    "body": [
+      "if err != nil {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Error check snippet."
+  },
+  "handler_func": {
+    "prefix": ["_func_http_handler"],
+    "body": [
+      "func (app *application) $1(w http.ResponseWriter, r *http.Request) {",
+      "\t${0://}",
+      "}"
+    ],
+    "description": "Http handler function."
+  },
+  "func_method": {
+    "prefix": ["_func_method"],
+    "body": [
+      "func (s *${1:receiver}) ${2:func_name}(${3:...}) ${4:(...)} {",
+      "\t${0://}",
+      "}"
+    ],
+    "description": "Method function."
+  },
+  "everphone_auth_middelware": {
+    "prefix": ["_everphone_auth_middleware"],
+    "body": [
+        "if os.Getenv(\"ENV\") == \"dev\" {",
+	    "\tc.Set(\"email\", \"admin.user@everphone.de\")",
+	    "\tc.Next()",
+	    "\treturn",
+        "}"
+    ],
+    "description": "Everphone auth snippet."
+  },
+  "table_test": {
+    "prefix": ["_table_test"],
+    "body": [
+		"t.Parallel()",
+		"",
+		"testCases := []struct{",
+		"\tname string",
+		"}{",
+	    "\t{",
+	    "\t\tname: \"test name\",",
+	    "\t},",
+        "}",
+        "",
+		"for _, tc := range testCases {",
+		"\tt.Run(tc.name, func(t *testing.T) {",
+		"\t\t${0://}",
+		"\t})",
+		"}"
+    ],
+    "description": "Table test snippet."
+  }
+}

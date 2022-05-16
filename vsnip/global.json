@@ -1,0 +1,9 @@
+{
+  "_example": {
+    "prefix": ["_example"],
+    "body": [
+	    "\tThis is exmple snippet"
+    ],
+    "description": "This is example snippet."
+  }
+}

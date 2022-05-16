@@ -1,0 +1,21 @@
+{
+  "class": {
+    "prefix": ["_class"],
+    "body": [
+      "${1: Class} = {}",
+      "${1: Class}MT = {__index = ${1: Class}}",
+      "",
+      "local privates = {}",
+      "",
+      "function ${1: Class}.new(opts)",
+      "\topts = opts or {}",
+      "\tlocal self = setmetatable({}, ${1: Class}MT)",
+      "\tprivates[self] = {}",
+      "",
+      "\treturn self",
+      "end"
+    ],
+    "description": "Class definition template."
+  }
+}
+

@@ -1,0 +1,32 @@
+{
+  "make_init": {
+    "prefix": ["_make_init"],
+    "body": [
+        "## help: print usage help message",
+        ".PHONY: help",
+        "help:",
+	    "\t@echo 'Usage:'",
+	    "\t@sed -n 's/^##//p' \\${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'\n"
+    ],
+    "description": "Make init add help target."
+  },
+  "make_target": {
+    "prefix": ["_make_target"],
+    "body": [
+        "## ${1:target_name}: ${2:description}",
+        ".PHONY: ${1:target_name}",
+        "${1:target_name}:\n\t"
+    ],
+    "description": "Make target add a new command."
+  },
+  "make_target_go_tests": {
+    "prefix": ["_make_target_go_tests"],
+    "body": [
+        "## tests/run: run all tests",
+        ".PHONY: tests/run",
+        "tests/run:",
+        "\t@go test -v -failfast -vet=off ./...\n"
+    ],
+    "description": "Make target add a new command."
+  }
+}
