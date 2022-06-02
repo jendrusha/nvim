@@ -14,32 +14,51 @@ require('go').setup({
 	dap_debug_vt = true, -- set to true to enable dap virtual text
 })
 
-local util = require('lspconfig.util')
-local lastRootPath = nil
 local gopath = os.getenv("GOPATH")
 if gopath == nil then
   gopath = ""
 end
-local gopathmod = gopath..'/pkg/mod'
 
 return {
+	-- https://github.com/ray-x/go.nvim/blob/0fe0a9ee3367f7bd1e9c9ab30d5b7d5e66b83fc6/lua/go/gopls.lua#L117-L181
 	root_dir = function(fname)
-		local fullpath = vim.fn.expand(fname, ':p')
-		if string.find(fullpath, gopathmod) and lastRootPath ~= nil then
-				return lastRootPath
-		end
-		lastRootPath = util.root_pattern("go.mod", ".git")(fname)
-		return lastRootPath
-	end,
+    local has_lsp, lspconfig = pcall(require, "lspconfig")
+    if has_lsp then
+      local util = lspconfig.util
+      return util.root_pattern("go.mod", ".git")(fname) or util.path.dirname(fname)
+    end
+  end,
 	capabilities = {
 		textDocument = {
 			completion = {
 				completionItem = {
-					snippetSupport = true,
+					commitCharactersSupport = true,
+          deprecatedSupport = true,
+          documentationFormat = { "markdown", "plaintext" },
+          preselectSupport = true,
+          insertReplaceSupport = true,
+          labelDetailsSupport = true,
+          snippetSupport = true,
+          resolveSupport = {
+            properties = {
+              "documentation",
+              "details",
+              "additionalTextEdits",
+            },
+          },
 				}
-			}
+			},
+			contextSupport = true,
+      dynamicRegistration = true,
 		}
 	},
+	filetypes = { "go", "gomod", "gohtmltmpl", "gotexttmpl" },
+  message_level = vim.lsp.protocol.MessageType.Error,
+	cmd = {
+    "gopls", -- share the gopls instance if there is one already
+    "-remote.debug=:0",
+  },
+	flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
 	settings = {
 		gopls = {
 			analyses = {
@@ -49,13 +68,23 @@ return {
 				nilness = true,
 				shadow = false,
 				useany = true,
+				unreachable = false,
 			},
-			staticcheck = false,
+			staticcheck = true,
 			usePlaceholders = false,
 			completeUnimported = true,
 			allExperiments = true,
-			hoverKind = 'FullDocumentation',
-			symbolStyle = 'Package',
+			matcher = "Fuzzy",
+      diagnosticsDelay = "500ms",
+      experimentalWatchedFileDelay = "100ms",
+      symbolMatcher = "fuzzy",
+			experimentalPostfixCompletions = true,
+      experimentalUseInvalidMetadata = true,
+      hoverKind = "Structured",
+			-- symbolStyle = 'Package',
+			["local"] = "",
+      gofumpt = false, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
+      buildFlags = { "-tags", "integration" },
 		},
 	}
 }
