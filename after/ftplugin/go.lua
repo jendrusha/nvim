@@ -1,7 +1,7 @@
 OPTLOCAL('expandtab', false)
 OPTLOCAL("colorcolumn", 121)
 
-vim.cmd [[ hi! ColorColumn guibg=#2e2d2d ]]
+vim.cmd [[ hi! ColorColumn guibg=#bfbfbf ]]
 
 vim.api.nvim_create_augroup("GolangGroup", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		local params = vim.lsp.util.make_range_params()
 		params.context = {only = {"source.organizeImports"}}
 
-		vim.lsp.buf.formatting_sync()
+		-- vim.lsp.buf.formatting_sync()
 
 		local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
 		for _, res in pairs(result or {}) do
@@ -23,5 +23,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 				end
 			end
 		end
+
+		-- vim.lsp.buf_request(0, 'textDocument/documentAction', params)
+
+		vim.cmd("w")
+		vim.cmd("GoFmt")
 	end
 })
