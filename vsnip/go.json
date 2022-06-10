@@ -42,7 +42,7 @@
     "body": [
 		"t.Parallel()",
 		"",
-		"testCases := []struct{",
+		"tests := []struct{",
 		"\tname string",
 		"}{",
 	    "\t{",
@@ -50,7 +50,7 @@
 	    "\t},",
         "}",
         "",
-		"for _, tc := range testCases {",
+		"for _, tc := range tests {",
 		"\tt.Run(tc.name, func(t *testing.T) {",
 		"\t\t${0://}",
 		"\t})",
