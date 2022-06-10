@@ -38,7 +38,7 @@ M.setup = function()
 			},
 			name = {
 				trailing_slash = false,
-				use_git_status_colors = false,
+				use_git_status_colors = true,
 			},
 			git_status = {
 				symbols = {

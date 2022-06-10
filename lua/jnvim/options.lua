@@ -45,7 +45,7 @@ M.load_options = function()
 		writebackup = false,
 		confirm = true,
 		clipboard = "unnamedplus",
-		fillchars = { horiz = '━', horizup = '┻', horizdown = '┳', vert = '┃', vertleft = '┫', vertright = '┣', verthoriz = '╋', },
+		fillchars = { horiz = '━', horizup = '┻', horizdown = '┳', vert = '.', vertleft = '┫', vertright = '┣', verthoriz = '╋', },
   }
 
   vim.opt.shortmess:append "c"

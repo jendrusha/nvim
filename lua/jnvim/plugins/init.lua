@@ -1,9 +1,12 @@
 -- {{{ [[ plugins list ]]
 local plugins = {
-	"projekt0n/github-nvim-theme",
+	"https://github.com/norcalli/nvim-colorizer.lua",
+	"https://github.com/projekt0n/github-nvim-theme",
 	"https://github.com/bluz71/vim-moonfly-colors",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/echasnovski/mini.nvim",
+  "https://github.com/windwp/nvim-autopairs",
+	"https://github.com/nvim-treesitter/playground",
 	{ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" },
 	{ "antoinemadec/FixCursorHold.nvim", event = "BufRead" },
   "https://github.com/ttys3/nvim-blamer.lua",
@@ -14,8 +17,6 @@ local plugins = {
       "MunifTanjim/nui.nvim"
     },
   },
-	-- "https://github.com/jayli/vim-easycomplete",
-	-- "https://github.com/SirVer/ultisnips",
   "https://github.com/godlygeek/tabular",
   "https://github.com/MunifTanjim/nui.nvim",
   "https://github.com/nvim-lua/popup.nvim",
@@ -42,14 +43,15 @@ local plugins = {
   "https://github.com/onsails/lspkind-nvim",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/creativenull/diagnosticls-configs-nvim",
-  "https://github.com/tjdevries/lsp_extensions.nvim",
   "https://github.com/ray-x/go.nvim",
 	"https://github.com/rcarriga/nvim-notify",
 	"https://github.com/vim-test/vim-test",
+	"https://github.com/simrat39/rust-tools.nvim",
   -- "https://github.com/rafaelsq/nvim-goc.lua",
-  -- mfussenegger/nvim-dap',
-  -- 'rcarriga/nvim-dap-ui',
-  -- 'theHamsta/nvim-dap-virtual-text',
+	'https://github.com/mfussenegger/nvim-dap',
+	'https://github.com/leoluz/nvim-dap-go',
+  'https://github.com/rcarriga/nvim-dap-ui',
+  'https://github.com/theHamsta/nvim-dap-virtual-text',
 }
 --}}}
 

@@ -24,7 +24,7 @@ function M.setup()
     },
     indent = {
       enable = true,
-      disable = {"yaml"},
+      disable = {"yaml", "go"},
     },
     incremental_selection = {
       enable = true,

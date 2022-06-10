@@ -80,7 +80,7 @@ return {
       symbolMatcher = "fuzzy",
 			experimentalPostfixCompletions = true,
       experimentalUseInvalidMetadata = true,
-      hoverKind = "Structured",
+      hoverKind = "FullDocumentation",
 			-- symbolStyle = 'Package',
 			["local"] = "",
       gofumpt = false, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils

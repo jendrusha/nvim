@@ -16,7 +16,7 @@ MAP('n', '<space><space>', '<cmd>noh<cr>')
 MAP('n', '<space>c', '<cmd>lua require"funcs.telescope".find_nvim_files()<cr>')
 MAP({'ie', 'te', 'n'}, '<m-e>', '<cmd>lua require"funcs.telescope".find_buffers()<cr>')
 MAP({'ie',  'te', 'n'}, '<m-E>', '<cmd>lua require"funcs.telescope".find_old_files()<cr>')
-MAP({'ie', 'te', 'n'}, '<m-o>', '<cmd>lua require"funcs.telescope".find_files()<cr>' .. '!vendor !cache ')
+MAP({'ie', 'te', 'n'}, '<m-o>', '<cmd>lua require"funcs.telescope".find_files()<cr>')
 MAP({'ie', 'te', 'n'}, '<m-O>', '<cmd>lua require"funcs.telescope".find_all_files()<cr>')
 MAP({'n', 'te', 'ie'}, '<c-f>', "<cmd>lua require('funcs.telescope').find_in_project()<cr>")
 MAP({'ie', 'n'}, '<m-w>', '<cmd>bd<cr>')
@@ -35,12 +35,23 @@ MAP('n', 'cd', '<cmd>let @+=expand("%:p:h")<cr>')
 -- MAP({'i', 'n', 't', 'v'}, '<m-\\>', '<cmd>StripWhitespaceOnChangedLines<cr>')
 MAP({'i', 'n', 't', 'v'}, '<m-|>', '<cmd>StripWhitespaceOnChangedLines<cr>')
 MAP({'i'}, '<s-del>', '<del>')
-MAP({'n', 'v'}, '<space>r', ':e<cr>')
+MAP({'n', 'v'}, '<space>r', ':e<cr><cmd>lua print("File refreshed!")<cr>')
+
+MAP({'ie', 'n'}, '<m-s>', '<cmd>w!<cr><cmd>lua print("File saved!")<cr>')
 MAP('n', '<space>s', '<cmd>lua require("funcs.telescope").session_manager()<cr>')
 
 EXEC [[
     imap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
     smap <expr> <c-j>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
     imap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-    smap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+		smap <expr> <c-k> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+		map <MiddleMouse> <Nop>
+		map <2-MiddleMouse> <Nop>
+		map <3-MiddleMouse> <Nop>
+		map <4-MiddleMouse> <Nop>
+
+		imap <MiddleMouse> <Nop>
+		imap <2-MiddleMouse> <Nop>
+		imap <3-MiddleMouse> <Nop>
+	imap <4-MiddleMouse> <Nop>
 ]]
